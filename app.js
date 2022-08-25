@@ -21,3 +21,6 @@ signOutLink.addEventListener('click', signOutUser);
 // display functions:
 
 // events:
+
+
+// initialize app:
