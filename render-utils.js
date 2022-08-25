@@ -1,27 +1,16 @@
-// export function renderChatRoom() {
-//     const chatRoom = document.createElement('div');
-//     chatRoom.classList.add('chatRoom');
-//     chatRoom.textContent = '';
-//     const post = document.createElement('p');
-//     post.classList.add('post');
-//     post.textContent = '';
-//     const user = document.createElement('p');
-//     user.classList.add('user');
-//     user.textContent = '';
-//     return chatRoom;
+export function renderPost(post) {
+    const containerEl = document.createElement('div');
+    containerEl.classList.add('post-container');
 
-// }
+    const imageEL = document.createElement('img');
+    imageEL.src = post.avatar;
 
-export function renderProfile(profiles) {
-    const profile = document.createElement('div');
-    profile.classList.add('profile');
-    const username = document.createElement('p');
-    username.classList.add('username');
-    username.textContent = profiles.username;
-    const avatar = document.createElement('img');
-    avatar.classList.add('avatar');
-    avatar.src = profiles.avatar;
-    profile.append(username, avatar);
-    return profile;
+    const userEl = document.createElement('p');
+    userEl.textContent = post.username;
 
+    const commentEl = document.createElement('p');
+    commentEl.textContent = post.comment;
+
+    containerEl.append(imageEL, userEl, commentEl);
+    return containerEl;
 }

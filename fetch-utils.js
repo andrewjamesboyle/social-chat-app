@@ -43,6 +43,11 @@ export async function signOutUser() {
 }
 
 /* Data functions */
+
+
+
+
+
 export async function updateProfile(profile) {
     return await client.from('chatApp').upsert(profile).single();
 }
