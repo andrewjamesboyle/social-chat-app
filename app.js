@@ -23,4 +23,13 @@ signOutLink.addEventListener('click', signOutUser);
 // events:
 
 
+
 // initialize app:
+
+// comment test
+
+
+
+
+
+// comment test 2
