@@ -15,10 +15,17 @@ signOutLink.addEventListener('click', signOutUser);
 /* end "boiler plate auth code" */
 
 // grab needed DOM elements on page:
+const containerEl = document.getElementById('chat-container');
 
 // local state:
 
 // display functions:
+async function displayComments() {
+containerEl.innerHTML = '';
+const comments = await 
+
+
+}
 
 // events:
 
