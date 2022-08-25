@@ -17,27 +17,26 @@ profile.addEventListener('submit', async (e) => {
 
     const userProfile = {
         username: data.get ('user-name'),
-        avatar: data.get ('avatar-input'),
     };
 
 
-    await updateProfile(userProfile);
-
-    const imageFile = FormData.get('avatar-input');
+    
+    const imageFile = data.get('avatar-input');
     if (imageFile.size) {
         const imageName = `${user.id}/${imageFile.name}`;
-
+        
         const url = await uploadImage(
-            'avatar',
+            'avatar.bucket',
             imageName,
             imageFile
-
+            
         );
-        updateProfile.avatar_url = url;
+        userProfile.avatar = url;
     }
+    
+    await updateProfile(userProfile);
 
-
-    profile.reset;
+    profile.reset();
 });
 
 

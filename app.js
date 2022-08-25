@@ -25,7 +25,7 @@ containerEl.innerHTML = '';
 const comments = await 
 
 
-}
+};
 
 // events:
 

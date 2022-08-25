@@ -53,14 +53,14 @@ export async function updateProfile(profile) {
 }
 
 export async function getProfileById(id) {
-    const response = await client.from('chatApp').select('').match({ id });
+    const response = await client.from('chatApp').select('*').match({ id });
     return response.data;
 }
 
 export async function uploadImage(bucketName, imageName, imageFile) {
 
     const bucket = client.storage.from(bucketName);
-    
+
     const response = await bucket.upload(imageName, imageFile, {
         cacheControl: '3600',
         upsert: true,
@@ -73,6 +73,6 @@ export async function uploadImage(bucketName, imageName, imageFile) {
 
 
 
-    const url = `${SUPABASE_URL}/storage/v1/avatar.bucket/public/${response.data.Key}`;
+    const url = `${SUPABASE_URL}/storage/v1/object/public/${response.data.Key}`;
     return url;
 }
