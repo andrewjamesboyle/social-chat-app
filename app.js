@@ -21,3 +21,5 @@ signOutLink.addEventListener('click', signOutUser);
 // display functions:
 
 // events:
+
+// andrew's comment
