@@ -76,3 +76,15 @@ export async function uploadImage(bucketName, imageName, imageFile) {
     const url = `${SUPABASE_URL}/storage/v1/object/public/${response.data.Key}`;
     return url;
 }
+
+export async function createComment(comment) {
+    return await client.from('comments').insert(comment).single();
+}
+
+export async function getComments() {
+    return await client.from('chatApp').select(
+        `*,
+        comment: comments(*)`
+    ).single();
+    
+}

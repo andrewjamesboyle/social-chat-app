@@ -1,12 +1,12 @@
 // importing other stuff, utility functions for:
 import { renderComment } from './render-utils.js';
 // working with supabase:
-import { checkAuth, signOutUser } from './fetch-utils.js';
+import { checkAuth, signOutUser, createComment, getComments } from './fetch-utils.js';
 // pure rendering (data --> DOM):
 
 /*  "boiler plate" auth code */
 // checking if we have a user! (will redirect to auth if not):
-checkAuth();
+const user = checkAuth();
 // can optionally return the user:
 // const user = checkAuth();
 
@@ -35,9 +35,22 @@ chatFormEl.addEventListener('submit', async (e) => {
         comment: data.get('comment')
     };
     console.log(newComment);
-    await createComment(newComment)
+
+    await createComment(newComment);
+    await displayComments();
 });
 
+async function displayComments() {
+    containerEl.innerHTML = '';
+
+    const comments = await getComments(user.id);
+    console.log(comments);
+    // for (let comment of comments) {
+    //     const newComment = renderComment(comment);
+    //     containerEl.append(newComment);
+    }
+
+// }
 // andrew's comment
 
 
