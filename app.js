@@ -34,7 +34,7 @@ chatFormEl.addEventListener('submit', async (e) => {
     const newComment = {
         comment: data.get('comment')
     };
-    console.log(newComment);
+
 
     await createComment(newComment);
     await displayComments();
@@ -43,12 +43,12 @@ chatFormEl.addEventListener('submit', async (e) => {
 async function displayComments() {
     containerEl.innerHTML = '';
 
-    const comments = await getComments(user.id);
+    const comments = await getComments();
     console.log(comments);
     // for (let comment of comments) {
     //     const newComment = renderComment(comment);
     //     containerEl.append(newComment);
-    }
+}
 
 // }
 // andrew's comment

@@ -82,9 +82,9 @@ export async function createComment(comment) {
 }
 
 export async function getComments() {
-    return await client.from('chatApp').select(
+    const response = await client.from('chatApp').select(
         `*,
         comment: comments(*)`
     ).single();
-    
+    return response.data;
 }
