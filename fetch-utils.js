@@ -55,15 +55,16 @@ export async function getProfileById(id) {
 export async function uploadImage(bucketName, imageName, imageFile) {
 
     const bucket = client.storage.from(bucketName);
+    
     const response = await bucket.upload(imageName, imageFile, {
         cacheControl: '3600',
         upsert: true,
     });
+
+
     if (response.error) {
         return null;
     }
-
-
 
 
 
