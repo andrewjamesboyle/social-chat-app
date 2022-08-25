@@ -25,8 +25,5 @@ signOutLink.addEventListener('click', signOutUser);
 // andrew's comment
 
 // comment test
-<<<<<<< HEAD
 
 // tanner test
-=======
->>>>>>> f1869a6123ee746be1814cc1d8835762730256a8
