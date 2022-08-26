@@ -11,8 +11,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&family=Titillium+Web:wght@200;400;600&display=swap">
-    <link rel="stylesheet" href="styles/reset.css" />
-    <link rel="stylesheet" href="styles/global.css" />
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/global.css" />
+    <link rel="stylesheet" href="profile.css">
     <title>Supabase Web App</title>
 </head>
 
@@ -26,21 +27,40 @@
     </header>
 
     <main>
-        <div id="chat-container" class="chat-container">
+
+
+
+        <div class="profile-info">
+
+            <form id="profile-form" class="profile-form">
+
+                <label>
+                    <input name="user-name" required placeholder="username?" class="user-name-input" id="user-name-input">
+                </label>
+                <br>
+
+                <label class="preview-img-label">
+                    <input type="file" name="avatar-input" class="file-input-preview" id="avatar-input">
+                    <img src="../assets/avatar.jpg" alt="avatar preview" class="preview-img" id="img-preview">
+                </label>
+
+                <br>
+                <button name="update-profile" id="update-profile">
+                    update profile
+                </button>
+
+            </form>
+
 
         </div>
 
-        <form id="chat-form">
-            <input name="comment" class="input comment" 
-            default placeholder="enter comment here">
-            <button>Add Comment</button>
-        </form>
+
+
 
     </main>
 
-    <footer>&copy;2022 Alchemy Software Developer</footer>
 
-    <script type="module" src="app.js"></script>
+    <script type="module" src="profile.js"></script>
 </body>
 
 </html>

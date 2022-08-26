@@ -1,6 +1,7 @@
 // importing other stuff, utility functions for:
+import { renderComment } from './render-utils.js';
 // working with supabase:
-import { checkAuth, signOutUser } from './fetch-utils.js';
+import { checkAuth, signOutUser, createComment, getComments } from './fetch-utils.js';
 // pure rendering (data --> DOM):
 
 /*  "boiler plate" auth code */
@@ -15,9 +16,32 @@ signOutLink.addEventListener('click', signOutUser);
 /* end "boiler plate auth code" */
 
 // grab needed DOM elements on page:
+const containerEl = document.getElementById('chat-container');
+const chatFormEl = document.getElementById('chat-form');
 
 // local state:
 
-// display functions:
 
 // events:
+chatFormEl.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(chatFormEl);
+    const newComment = {
+        comment: data.get('comment')
+    };
+
+
+    await createComment(newComment);
+    await displayComments();
+});
+
+async function displayComments() {
+    containerEl.innerHTML = '';
+
+    const comments = await getComments();
+    console.log(comments);
+    for (let comment of comments) {
+        const newComment = renderComment(comment);
+        containerEl.append(newComment);
+    }
+}

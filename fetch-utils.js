@@ -1,5 +1,5 @@
-const SUPABASE_URL = '';
-const SUPABASE_KEY = '';
+const SUPABASE_URL = 'https://qccwdgqhkuvusyzbcido.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFjY3dkZ3Foa3V2dXN5emJjaWRvIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjA2MDcwNjcsImV4cCI6MTk3NjE4MzA2N30.DFfLtHUtrylbCXtdC__wIA1RZKo0p5Rk9ie6QztGjBM';
 
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
@@ -43,3 +43,47 @@ export async function signOutUser() {
 }
 
 /* Data functions */
+
+
+
+
+
+export async function updateProfile(profile) {
+    return await client.from('chatApp').upsert(profile).single();
+}
+
+export async function getProfileById(id) {
+    const response = await client.from('chatApp').select('*').match({ id });
+    return response.data;
+}
+
+export async function uploadImage(bucketName, imageName, imageFile) {
+
+    const bucket = client.storage.from(bucketName);
+
+    const response = await bucket.upload(imageName, imageFile, {
+        cacheControl: '3600',
+        upsert: true,
+    });
+
+
+    if (response.error) {
+        return null;
+    }
+
+
+
+    const url = `${SUPABASE_URL}/storage/v1/object/public/${response.data.Key}`;
+    return url;
+}
+
+export async function createComment(comment) {
+    return await client.from('comments').insert(comment).single();
+}
+
+export async function getComments() {
+    const response = await client.from('comments').select(
+        `*, chatApp(*)`);
+    return response.data;
+}
+// we expect to get an array of comments, which is all rows from the comments table, which is foreign key linked to the chatApp table via user_id
