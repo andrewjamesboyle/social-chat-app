@@ -6,7 +6,7 @@ import { checkAuth, signOutUser, createComment, getComments } from './fetch-util
 
 /*  "boiler plate" auth code */
 // checking if we have a user! (will redirect to auth if not):
-const user = checkAuth();
+checkAuth();
 // can optionally return the user:
 // const user = checkAuth();
 
@@ -20,11 +20,6 @@ const containerEl = document.getElementById('chat-container');
 const chatFormEl = document.getElementById('chat-form');
 
 // local state:
-
-// display functions:
-// async function displayComments() {
-// containerEl.innerHTML = '';
-// const comments = await 
 
 
 // events:
@@ -45,26 +40,8 @@ async function displayComments() {
 
     const comments = await getComments();
     console.log(comments);
-    // for (let comment of comments) {
-    //     const newComment = renderComment(comment);
-    //     containerEl.append(newComment);
+    for (let comment of comments) {
+        const newComment = renderComment(comment);
+        containerEl.append(newComment);
+    }
 }
-
-// }
-// andrew's comment
-
-
-
-// initialize app:
-
-// comment test
-
-
-
-
-
-// comment test 2
-// comment test
-// tanner test
-// tanner test
-

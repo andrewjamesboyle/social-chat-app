@@ -3,10 +3,10 @@ export function renderComment(comment) {
     containerEl.classList.add('post-container');
 
     const imageEL = document.createElement('img');
-    imageEL.src = comment.avatar;
+    imageEL.src = comment.chatApp.avatar;
 
     const userEl = document.createElement('p');
-    userEl.textContent = comment.username;
+    userEl.textContent = comment.chatApp.username;
 
     const commentEl = document.createElement('p');
     commentEl.textContent = comment.comment;

@@ -82,9 +82,8 @@ export async function createComment(comment) {
 }
 
 export async function getComments() {
-    const response = await client.from('chatApp').select(
-        `*,
-        comment: comments(*)`
-    ).single();
+    const response = await client.from('comments').select(
+        `*, chatApp(*)`);
     return response.data;
 }
+// we expect to get an array of comments, which is all rows from the comments table, which is foreign key linked to the chatApp table via user_id
